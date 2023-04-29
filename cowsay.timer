@@ -1,0 +1,8 @@
+[Unit]
+Description=Run Cowsay daily at 0600
+
+[Timer]
+OnCalendar=Mon,Tue,Wed,Thu,Fri *-*-* 06:00:00
+
+[Install]
+WantedBy=timers.target

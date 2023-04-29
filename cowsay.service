@@ -1,0 +1,9 @@
+[Unit]
+Description=email work with COWSAY and fortune
+DefaultDependencies=no
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/josh/scripts/cowsay.py
+TimeoutStartSec=0
+
