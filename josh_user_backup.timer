@@ -1,0 +1,11 @@
+[Unit]
+Description=Weekly backup timer for josh_user_backup
+Requires=josh_user_backup.service
+
+[Timer]
+OnCalendar=weekly
+OnActiveSec=10min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

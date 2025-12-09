@@ -1,0 +1,14 @@
+[Unit]
+Description=Josh User Backup Service
+After=network.target
+
+[Service]
+Type=oneshot
+User=josh
+ExecStart=/home/josh/bin/josh_backup.sh
+StandardOutput=journal
+StandardError=journal
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target
