@@ -4,7 +4,6 @@ Requires=josh_user_backup.service
 
 [Timer]
 OnCalendar=weekly
-OnActiveSec=10min
 Persistent=true
 
 [Install]
