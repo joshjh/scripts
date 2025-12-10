@@ -6,7 +6,7 @@ backup_cerberus_vms() {
     echo "Starting backup of Cerberus VMs..."
     # Add your VM backup logic here
     sudo virsh dumpxml win11 > "$MOUNT_POINT"/vms/cerberus_vms/win11_cerberus.xml
-    sudo rsync -avz --exclude '.snapshots' /opt/vms/ "$MOUNT_POINT"/vms/cerberus_vms/
+    sudo rsync -avz --exclude '.snapshots' --exclude '.Trash*' /opt/vms/ "$MOUNT_POINT"/vms/cerberus_vms/
     echo "Finished backup of Cerberus VMs..."
 }
 
@@ -14,13 +14,13 @@ backup_thinkpad_vms() {
     # Function to backup Thinkpad VMs
     echo "Starting backup of Thinkpad VMs..."
     # Add your VM backup logic here
-    sudo virsh dumpxml win11 > "$MOUNT_POINT"/vms/thinkpad_vms/win11_cerberus.xml
-    sudo rsync -avz --exclude '.snapshots' /opt/vms/ "$MOUNT_POINT"/vms/thinkpad_vms/
-    
+    sudo virsh dumpxml win11_cranfield > "$MOUNT_POINT"/vms/thinkpad_vms/win11_cranfield.xml
+    sudo rsync -avz --exclude '.snapshots' --exclude '.Trash*' /vms/ "$MOUNT_POINT"/vms/thinkpad_vms/
+    echo "Finished backup of Thinkpad VMs..."
 }
 
 # Check if the disk is already mounted
-if ! findmnt -U "$UUID" >/dev/null 2>&1; then
+if ! findmnt -S UUID="$UUID" >/dev/null 2>&1; then
     echo "Disk with UUID $UUID is not mounted. Attempting to mount..."
     # Create mount point if it doesn't exist
     sudo mkdir -p "$MOUNT_POINT"
