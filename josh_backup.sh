@@ -11,7 +11,7 @@ echo "Starting scheduled josh backup..."
 notify-send "Starting scheduled local backup"
 
 # duplicity commands
-duplicity --no-encryption --full-if-older-than 1M /home/josh/ file:///magnetic/josh_backup_dup
+PASSPHRASE='' duplicity --exclude /home/josh/.local --exclude /home/josh/.snapshots --no-encryption --full-if-older-than 1M /home/josh/ file:///magnetic/josh_backup_dup
 
 echo "Backup completed successfully"
 notify-send "Scheduled local backup completed successfully"
