@@ -1,6 +1,5 @@
 [Unit]
 Description=Weekly backup timer for orzo sd card full backup
-Requires=orzo_full_backup.service
 
 [Timer]
 OnCalendar=*-*-01 03:00:00
